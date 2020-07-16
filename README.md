@@ -1,2 +1,2 @@
-# K-thu-t-l-p-tr-nh
+# Ky thuat lap trinh
 C - Java - Php
