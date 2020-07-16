@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <string.h>
+#define MAX 100
+void nhap(int *n,float a[MAX]){
+	printf("Nhap so day so:");
+	scanf("%d",n);
+	for(int i = 0 ; i < *n ; i ++){
+		printf("a[%d] = ",i);
+		scanf("%f",&a[i]);
+	}
+}
+float max(int n,float a[MAX]){
+	if ( n == 1 ) return a[0];
+	else{
+		if (a[n-1] > max(n-1,a)) return a[n-1];
+		else return max(n-1,a);
+	}
+//vong lap
+//	 max = a[0];
+//    for (int i = 1; i < n; i++)
+//        if (max < a[i]) mintax = a[i];
+//    return max;
+}
+float sum(int n, float a[MAX]){
+	float tong = 0;
+	if ( n == 1 ) return a[0];
+	else return a[n-1]+sum(n-1,a);
+}
+int main()
+{
+	int c, n;
+	float m,s;
+	float a[MAX];
+	while(c!=4){
+		printf("\n|============MENU============|");
+		printf("\n|Chon 1:Nhap day so          |");
+		printf("\n|Chon 2:Tim phan tu lon nhat |");
+		printf("\n|Chon 3:Tinh tong day        |");
+		printf("\n|Chon 4:Exit                 |");
+		printf("\nMoi chon so:");
+		scanf("%d",&c);
+		switch(c){
+			case 1:nhap(&n,a);break;
+			case 2: m = max(n,a);printf("MAX = %.2f",m);break;
+			case 3: s = sum(n,a);printf("SUM = %.2f",s);break;
+		}
+	}
+	return 0;
+}
