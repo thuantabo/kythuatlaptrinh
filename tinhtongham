@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <conio.h>
+#include <math.h>
+#include <string.h>
+#include <cstdlib>
+#define MAX 100
+void nhap (int *n){
+	printf("\nNhap so nguyen n = ");
+	scanf("%d",n);
+}
+long dathuc(int n){
+	if ( n == 1 ) return (1-5)*(1-5);
+	return (n*n)+dathuc(n-1);
+}
+
+double hamcos(int n){
+	double s = 0;
+	for (int  i = 1 ; i <= n ; i ++ ){
+		s += cos(double(i))*cos(double(i));
+	}
+	return double(s);
+}
+
+double hamsin(int n){
+	if ( n == 1 ) return sin(double(1))*sin(double(1));
+	return sin(double(n))*sin(double(n))+hamsin(n-1);
+}
+
+int main()
+{
+	int n;
+	long sum1,c;
+	double sum23;
+	while (c != 0){
+		printf("\n\n\n");
+		printf("                     MENU\n");
+		printf("Chon 1:Tinh tong ham ((x-5)*(x-5)) tu 1 den N\n");
+		printf("Chon 2:Tinh tong ham cos(x)2 tu 1 den N\n");
+		printf("Chon 3:Tinh tong ham sin(x)2 tu 1 den N\n");
+		printf("Chon 4:Ket thuc\n");
+		printf("Moi ban chon: ");
+		scanf("%d",&c);
+		switch(c){
+			case 1:nhap(&n);sum1 = dathuc(n);printf("SUM DA THUC = %ld",sum1);break;
+			case 2:nhap(&n);sum23 = hamcos(n);printf("SUM HAM COS = %lf",sum23);break;
+			case 3:nhap(&n);sum23 = hamsin(n);printf("SUM HAM SIN = %lf",sum23);break;
+			case 4:getch();return 0;
+			default:system("cls");main();
+		}
+	}
+	getch ();
+	return 0;
+}
