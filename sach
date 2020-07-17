@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <conio.h>
+#include <math.h>
+#include <string.h>
+#include <cstdlib>
+#define MAX 100
+
+typedef struct {
+	int MaSach;
+	char TenSach[MAX];
+	char TacGia[MAX];
+	int MaNXB;
+}sach;
+void nhap(int *n, sach s[MAX]){
+	printf("\nNhap so luong sach:");
+	scanf("%d",n);
+	for(int i=0;i<*n;i++){
+		printf("\nSach thu %d",i+1);
+		printf("\nMa sach: ");
+		scanf("%d",&s[i].MaSach);
+		printf("\nTen sach: ");
+		fflush(stdin);
+		gets(s[i].TenSach);
+		printf("\nTen tac gia: ");
+		fflush(stdin);
+		gets(s[i].TacGia);
+		printf("\nMa NXB: ");
+		scanf("%d",&s[i].MaNXB);
+	}
+}
+void hienthi(int n, sach s[MAX]){
+	int i,nxb;
+	printf("\nNhap Ma NXB:");
+	scanf("%d",&nxb);
+	printf("\nDANH SACH CAC SACH DONG NXB");
+	printf("\n STT  Ma sach   Ten sach   Tac gia   Ma tac gia");	
+	for(i = 0 ; i < n ; i ++ ){
+		if(s[i].MaNXB == nxb )
+		printf("\n %d\t%d\t%s\t\t%s\t%d",i+1,s[i].MaSach,s[i].TenSach,s[i].TacGia,s[i].MaNXB);		
+	}	
+	printf("\n\n");
+}
+int main()
+{
+	int n,c;
+	sach s[MAX];
+	while (c!=3){
+		printf("\n");
+		printf("\t\t|--------------MENU------------|\n");
+		printf("\t\t|Chon 1: Nhap danh muc sach    |\n");
+		printf("\t\t|Chon 2: Hien thi sach cung NXB|\n");
+		printf("\t\t|Chon 3: Ket thuc              |\n");	
+		printf("\nMoi chon so:");
+		scanf("%d",&c);
+		switch(c){
+			case 1:nhap(&n,s);break;
+			case 2:hienthi(n,s);break;
+			case 3:getch();return 0;
+			default:system("cls");main();break;
+		}
+	}
+	getch ();
+	return 0;
+}
