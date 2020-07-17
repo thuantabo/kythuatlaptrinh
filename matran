@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <conio.h>
+#include <string.h>
+#include <cstdlib>
+#define MAX 100
+void nhap(int *n, int a[MAX][MAX]){
+	printf("\nNhap cap so ma tran: ");
+	scanf("%d",n);
+	for(int i=0;i<*n;i++){
+		for(int j=0;j<*n;j++){
+			printf("a[%d][%d] = ",i,j);
+			scanf("%d",&a[i][j]);
+		}
+	}
+}
+void in(int n, int a[MAX][MAX]){
+	printf("\n\tMA TRAN\n\t");
+	for (int i=0;i<n;i++){
+		for(int j=0;j<n;j++){
+			if(i==j) printf(" %d ",a[i][j]);
+			else printf(" * ");
+		}
+		printf("\n\t");
+	}
+}
+int main()
+{
+	int n,c;
+	int a[MAX][MAX];
+	while(c!=4){
+		printf("\n|============MENU============|");
+		printf("\n|Chon 1: Nhap vao ma tran    |");
+		printf("\n|Chon 2: In duong cheo chinh |");
+		printf("\n|Chon 3: Ket thuc            |");
+		printf("\nMoi ban chon ");
+		scanf("%d",&c);
+		switch(c){
+			case 1:nhap(&n,a);break;
+			case 2:in(n,a);break;
+			case 3: getch (); return 0;
+			default:system("cls"); main();
+		}
+	}
+	getch ();
+	return 0;
+}
