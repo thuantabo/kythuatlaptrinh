@@ -1,0 +1,94 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package bai10;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author thuan
+ */
+public class SequenceOfNumber {
+
+    public static void inputSon(int[] number) {
+        System.out.println("Nhap so phan tu cua day");
+        int index = new Scanner(System.in).nextInt();
+        System.out.println("Nhap cac phan tu cua day");
+        for (int i = 0; i < index; i++) {
+            System.out.print("Number" + (i + 1) + ": ");
+            number[i] = new Scanner(System.in).nextInt();
+        }
+    }
+
+    public static int maxSon(int[] number, int max, int index) {
+        if (index > number.length) {
+            return max;
+        }
+        if (index > 99) {
+            return max;
+        }
+        return maxSon(number, number[max] > number[index] ? max : index, index + 1);
+    }
+    
+    public static float maxSon(float[] number, int max, int index) {
+        if (index > number.length) {
+            return max;
+        }
+        if (index > 99) {
+            return max;
+        }
+        return maxSon(number, number[max] > number[index] ? max : index, index + 1);
+    }
+    
+    public static double maxSon(double[] number, int max, int index) {
+        if (index > number.length) {
+            return max;
+        }
+        if (index > 99) {
+            return max;
+        }
+        return maxSon(number, number[max] > number[index] ? max : index, index + 1);
+    }
+
+    public static int sumSon(int[] number, int index, int sum) {
+        if (index > number.length) {
+            return sum;
+        }
+        if (index > 99) {
+            return sum;
+        }
+        return sumSon(number, index + 1, sum + number[index]);
+    }
+
+    public static void main(String[] args) {
+//        char choose;
+        int[] number = new int[100];
+        do {
+            System.out.println();
+            System.out.println("==========MENU==========");
+            System.out.println("Chon 1: Nhap day so");
+            System.out.println("Chon 2: Tim phan tu lon nhat");
+            System.out.println("Chon 3: Tinh tong day");
+            System.out.println("Chon 4 Ket thuc ");
+            System.out.print("Moi ban chon:");
+            switch (new Scanner(System.in).nextInt()) {
+                case 1:
+                    inputSon(number);
+                    break;
+                case 2:
+                    System.out.println("SUM = " + number[maxSon(number, 0, 0)]);
+                    break;
+                case 3:
+                    System.out.println("SUM = " + sumSon(number, 0, 0));
+                    break;
+                case 4:
+                    return;
+                default:
+                    break;
+            }
+        } while (true);
+    }
+}
