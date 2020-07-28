@@ -35,23 +35,19 @@ public class SoNguyenDuong {
         }
     }
 
-    public static boolean isPrimeRecursive(int number) {
-        if (number < 2) {
-            return false;
+    public static int isPrimeRecursive(int number,int i) {
+        if (number == i) {
+            return 1;
         }
-        for (int i = 2; i < number; i++) {
-            if (number % i == 0) {
-                return false;
-            }
-        }
-        return true;
+        if (number % i == 0) return 0;
+        return isPrimeRecursive(number , i+1 );
     }
-    
+     
     public static void outputRecursive(int number) {
-        if (number == 1) {
+        if (number == 0) {
             return;
         }
-        if (isPrimeRecursive(number)) {
+        if (isPrimeRecursive(number, 2) == 1) {
             System.out.println(" " + number);
         }
         outputRecursive(number - 1);
